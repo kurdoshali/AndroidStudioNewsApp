@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Project1NewsApp</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_sources_screen">SourcesScreen</string>
 </resources>
