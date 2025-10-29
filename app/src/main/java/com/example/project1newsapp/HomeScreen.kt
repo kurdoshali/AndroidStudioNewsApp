@@ -1,6 +1,7 @@
 package com.example.project1newsapp
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -36,6 +37,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
+import androidx.core.content.edit
 import com.example.project1newsapp.ui.theme.Project1NewsAppTheme
 
 class HomeScreen : ComponentActivity() {
@@ -81,7 +83,13 @@ fun HomeScreen (modifier: Modifier = Modifier){
         )
         Spacer(Modifier.height(30.dp))
 
-        OutlinedButton(onClick = { }, enabled=checkEmpty(search)) {
+        OutlinedButton(onClick = {
+            prefs.edit{putString("search", search)}
+
+            val intent = Intent(context, SourcesScreen::class.java)
+            intent.putExtra("searchTerm", search)
+            context.startActivity(intent)
+        }, enabled=checkEmpty(search)) {
             Text("Search")
         }
         Spacer(Modifier.height(30.dp))
@@ -102,8 +110,11 @@ fun HomeScreen (modifier: Modifier = Modifier){
             ) {
                 Text("News by Location")
                 Spacer(Modifier.height((30.dp)))
-                ElevatedButton(onClick = {}) {
-                    Text("Local Search")
+                ElevatedButton(onClick = {
+                    val intent3 = Intent(context, ComposeMap::class.java)
+                    context.startActivity(intent3)
+                }) {
+                    Text("View Map")
                 }
             }
         }
@@ -126,7 +137,10 @@ fun HomeScreen (modifier: Modifier = Modifier){
             ) {
                 Text("Top Headlines")
                 Spacer(Modifier.height((30.dp)))
-                ElevatedButton(onClick = {}) {
+                ElevatedButton(onClick = {
+                    val intent2 = Intent(context, TopHeadlinesScreen::class.java)
+                    context.startActivity(intent2)
+                }) {
                     Text("View Headlines")
                 }
             }
