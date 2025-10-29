@@ -2,4 +2,8 @@
     <string name="app_name">Project1NewsApp</string>
     <string name="title_activity_home_screen">HomeScreen</string>
     <string name="title_activity_sources_screen">SourcesScreen</string>
+    <string name="title_activity_results_screen">ResultsScreen</string>
+    <string name="title_activity_top_headlines">TopHeadlines</string>
+    <string name="title_activity_google_map_screen">GoogleMapScreen</string>
+    <string name="title_activity_compose_map">ComposeMap</string>
 </resources>
